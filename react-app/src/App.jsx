@@ -1,15 +1,15 @@
-/* TODO - npm install react-router-dom recharts react-google-charts c3 d3 */
+/* npm install react-router-dom recharts react-google-charts c3 d3 */
 
-/* TODO - read about React Charts (ReCharts): https://recharts.github.io/ */
-/* TODO - read about React Google Charts: https://www.react-google-charts.com/ */
-/* TODO - read about C3 (D3): https://c3js.org/ */
+/* read about React Charts (ReCharts): https://recharts.github.io/ */
+/* read about React Google Charts: https://www.react-google-charts.com/ */
+/* read about C3 (D3): https://c3js.org/ */
 
 
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from "react-router-dom";
 import "./App.css";
 // TODO import fgraphStatic image
-// TODO import chartCommonData, COLORS
+import {chartCommonData, COLORS} from './modules/chart-common-data'
 // TODO import LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, BarChart, Bar, Rectangle, PieChart, Pie, Cell, ReferenceLine from Recharts
 // TODO import Chart from React-Google-Charts
 import C3LineChart from "./components/C3LineChart/C3LineChart";
@@ -65,10 +65,20 @@ const f = x => x // TODO - function should return ( sin(x) + 2x ) / x number by 
 // TODO - outsource component
 const DataPage = () => <>
   <h2>Data</h2>
-  <p><strong>Title:</strong> TODO chartCommonData title</p>
+  <p><strong>Title:</strong> {chartCommonData.title}</p>
   <p>
-    TODO table<br />
-    TODO header cells: Country, Unemployment rate [%]<br />
+    <table>
+      <tr>
+        <th>Country</th>
+        <th>Unemployment rate [%]</th>
+      </tr>
+
+      {chartCommonData.data.map( ({label, value})=><tr key={label}>
+        <td>{label}</td>
+        <td>{value}</td>
+      </tr> )}
+      
+    </table>
     TODO body cells: chartCommonData data label, value<br />
   </p>
   <p>
