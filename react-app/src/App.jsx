@@ -10,7 +10,7 @@ import { BrowserRouter as Router, Routes, Route, Link, useLocation } from "react
 import "./App.css";
 // TODO import fgraphStatic image
 import {chartCommonData, COLORS} from './modules/chart-common-data'
-// TODO import LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, BarChart, Bar, Rectangle, PieChart, Pie, Cell, ReferenceLine from Recharts
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, BarChart, Bar, Rectangle, PieChart, Pie, Cell, ReferenceLine } from 'recharts';
 // TODO import Chart from React-Google-Charts
 import C3LineChart from "./components/C3LineChart/C3LineChart";
 
@@ -77,7 +77,7 @@ const DataPage = () => <>
         <td>{label}</td>
         <td>{value}</td>
       </tr> )}
-      
+
     </table>
     TODO body cells: chartCommonData data label, value<br />
   </p>
@@ -88,7 +88,24 @@ const DataPage = () => <>
 // TODO - outsource component
 const RechartsPage = props => <>
  <h2>React Charts Page</h2>
-    <div>TODO - draw Recharts LineChart</div>
+    <LineChart
+      style={{ width: '100%', maxWidth: '700px', height: '100%', maxHeight: '70vh', aspectRatio: 1.618 }}
+      responsive
+      data={chartCommonData.data}
+      margin={{
+        top: 5,
+        right: 0,
+        left: 0,
+        bottom: 5,
+      }}
+    >
+      <CartesianGrid strokeDasharray="3 3" />
+      <XAxis dataKey="label" padding={{left: 30}} />
+      <YAxis width="auto" />
+      <Tooltip />
+      <Legend />
+      <Line type="linear" dataKey="value" stroke="#8884d8" activeDot={{ r: 8 }} />
+    </LineChart>
 
     <div>TODO - draw Recharts BarChart</div>
 
