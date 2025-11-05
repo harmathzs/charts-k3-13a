@@ -28,6 +28,23 @@ export default class C3LineChart extends React.Component {
             <h2>C3 Line chart</h2>
             {/* chart container div */}
             <div ref={this.state.chartRef}>&nbsp;</div>
+            <div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Country</th>
+                            <th>Unemployment rate [%]</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {this.props.chartCommonData.data.map( ({label, value})=><tr key={label}>
+                            <td>{label}</td>
+                            <td>{value}</td>
+                        </tr> )}
+                    </tbody>
+                </table>
+            </div>
         </div>
     }
 }
