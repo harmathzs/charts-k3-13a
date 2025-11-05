@@ -12,7 +12,11 @@ export default class C3LineChart extends React.Component {
         this.setState({chart: c3.generate({
             bindto: this.state.chartRef.current,
             type: 'line',
-            data: this.props.chartCommonData.data
+            data: {
+                columns: [
+                    this.props.chartCommonData.data.map( ({label, value}) => value )
+                ]
+            }
         })})
     }
 
