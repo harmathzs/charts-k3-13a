@@ -1,6 +1,6 @@
 import React from "react";
-// TODO import c3
-// TODO import c3 styles
+import c3 from 'c3'
+import 'c3/c3.css'
 export default class C3LineChart extends React.Component {
     state = {
         chartRef: React.createRef(),
@@ -8,14 +8,19 @@ export default class C3LineChart extends React.Component {
     }
 
     componentDidMount() {
-        // TODO - generate line chart from props and state
+        // generate line chart from props and state
+        this.setState({chart: c3.generate({
+            bindto: this.state.chartRef.current,
+            type: 'line',
+            data: this.props.chartCommonData.data
+        })})
     }
 
     render() {
         return <div>
             <h2>C3 Line chart</h2>
             {/* chart container div */}
-            <div>TODO - set ref</div>
+            <div ref={this.state.chartRef}>&nbsp;</div>
         </div>
     }
 }
