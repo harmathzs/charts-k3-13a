@@ -15,8 +15,10 @@ export default class C3LineChart extends React.Component {
             data: {
                 columns: [
                     [ this.props.chartCommonData.title , 
-                        ...this.props.chartCommonData.data.map( ({label, value}) => value )]
-                ]
+                        ...this.props.chartCommonData.data.map( ({label, value}) => value )],
+                    ['x-labels', 1, 2, 3, 4, 5], // TODO - generate 1,2...dynamically from chartCommonData
+                ],
+                x: 'x-labels'
             }
         })})
     }
