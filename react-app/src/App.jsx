@@ -11,7 +11,7 @@ import "./App.css";
 // TODO import fgraphStatic image
 import {chartCommonData, COLORS} from './modules/chart-common-data'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, BarChart, Bar, Rectangle, PieChart, Pie, Cell, ReferenceLine } from 'recharts';
-// TODO import Chart from React-Google-Charts
+import {Chart} from 'react-google-charts'
 import C3LineChart from "./components/C3LineChart/C3LineChart";
 
 // Main top menu bar
@@ -117,7 +117,18 @@ const RechartsPage = props => <>
 // TODO - outsource component
 const GoogleChartsPage = props => <>
  <h2>Google Charts Page</h2>
- <div>TODO - insert Google LineChart with chartCommonData data</div>
+ 
+<Chart
+  chartType="LineChart"
+  width="100%"
+  height="100%"
+  data={[ 
+    ['country', 'rate'], 
+    ...chartCommonData.data.map( ({label, value})=>[label, value] )
+  ]}
+  legendToggle
+/>
+
  <div>TODO - insert Google column bar chart with chartCommonData data</div>
  <div>TODO - insert Google PieChart with chartCommonData data</div>
  </>;
