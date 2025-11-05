@@ -32,13 +32,15 @@ export default class C3LineChart extends React.Component {
                 <table>
                     <thead>
                         <tr>
+                            <th>#</th>
                             <th>Country</th>
                             <th>Unemployment rate [%]</th>
                         </tr>
                     </thead>
 
-                    <tbody>
-                        {this.props.chartCommonData.data.map( ({label, value})=><tr key={label}>
+                    <tbody>  
+                        {this.props.chartCommonData.data.map( ({label, value}, idx)=><tr key={label}>
+                            <td>{1+idx}</td>
                             <td>{label}</td>
                             <td>{value}</td>
                         </tr> )}
