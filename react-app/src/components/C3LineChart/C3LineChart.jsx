@@ -8,6 +8,12 @@ export default class C3LineChart extends React.Component {
     }
 
     componentDidMount() {
+        const indices = []
+        for (let i=1; i<=this.props.chartCommonData.data.length; i++) {
+            indices.push(i)
+        }
+        console.log('indices', indices)
+
         // generate line chart from props and state
         this.setState({chart: c3.generate({
             bindto: this.state.chartRef.current,
@@ -16,7 +22,7 @@ export default class C3LineChart extends React.Component {
                 columns: [
                     [ this.props.chartCommonData.title , 
                         ...this.props.chartCommonData.data.map( ({label, value}) => value )],
-                    ['x-labels', 1, 2, 3, 4, 5], // TODO - generate 1,2...dynamically from chartCommonData
+                    ['x-labels', ...indices], // generate 1,2...dynamically from chartCommonData
                 ],
                 x: 'x-labels'
             }
